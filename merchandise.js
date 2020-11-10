@@ -68,7 +68,10 @@ domString +=
     </div>
 </div>
 
-for (let i = 0; i <Merchandisearray.length; i++) { 
+
+
+
+{/* for (let i = 0; i <Merchandisearray.length; i++) { 
   domString += `<h1>${arrayOfStudents[i].all}</h1>`;
   domString += `<h1>${arrayOfStudents[i].apparel}</h1>`;
   domString += `<h1>${arrayOfStudents[i].media}</h1>`;
@@ -78,7 +81,7 @@ for (let i = 0; i <Merchandisearray.length; i++) {
 }
 
 for (let i = 0; i <MerchandiseArray.length; i++) { 
-        merchPrinter(MerchandiseArray)
+        merchPrinter(MerchandiseArray) */}
     };
     
     const Apparel = MerchandiseArray.filter(item => item.type === 'apparel')

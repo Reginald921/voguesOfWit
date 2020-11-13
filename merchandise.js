@@ -58,19 +58,18 @@ const printToDom = (divId, textToPrint) => {
 const merchPrinter = (merchandiseArray) => {
     let domString = '';
     for ( i = 0; i < merchandiseArray.length; i++) { 
-      domString += `
-      <div class= "card_print">
-        <div class= "card" style="width: 18rem;">
-          <img class="card-img-top" src="${merchandiseArray[i].image}" alt="Card image cap">
-          <div class= "card-body">
-            <h5 class= "card-title">${merchandiseArray[i].item}</h5>
-            <p class= "card-text">${merchandiseArray[i].description} ,${merchandiseArray[i].price}</p>
-            <button onclick="purchaseAlert()" id="btn-1" class="btn purchase-btn-group btn-primary button--1">Purchase</button>
-          </div>
+      domString += `      
+      <div class= "card" style="width: 18rem;">
+        <img class="card-img-top" src="${merchandiseArray[i].image}" alt="Card image cap">
+        <div class= "card-body">
+          <h5 class= "card-title">${merchandiseArray[i].item}</h5>
+          <p class= "card-text">${merchandiseArray[i].description} ,${merchandiseArray[i].price}</p>
+          <button onclick="purchaseAlert()" id="btn-1" class="btn purchase-btn-group btn-primary button--1">Purchase</button>
         </div>
-      </div>
-    `} 
-    printToDom('allInfo', domString)
+      </div>      
+    `
+      } 
+      printToDom('allInfo', domString)
   }
   
   const init = () => {
@@ -79,16 +78,16 @@ const merchPrinter = (merchandiseArray) => {
   
   init();
   
-  const apparel_sort = merchandiseArray.filter(group => group .type === 'apparel')
-  const media_sort = merchandiseArray.filter(group => group.type === 'media')
-  const tourMerchandise_sort = merchandiseArray.filter(group => group.type === 'tourMerchandise')
-  const CollectorMerchandise_sort = merchandiseArray.filter(group => group.type === 'CollectorMerchandise')
-  const evHome_sort = merchandiseArray.filter(group => group.type === 'evHome')
-  const All_sort = merchandiseArray.filter(group => group.type === 'apparel' || 'media' || 'tourMerchandise' || 'CollectorMerchandise' || 'evHome')
+  const apparel_sorts = merchandiseArray.filter(group => group .type === 'apparel')
+  const media_sorts = merchandiseArray.filter(group => group.type === 'media')
+  const tourMerchandise_sorts = merchandiseArray.filter(group => group.type === 'tourMerchandise')
+  const CollectorMerchandise_sorts = merchandiseArray.filter(group => group.type === 'CollectorMerchandise')
+  const evHome_sorts = merchandiseArray.filter(group => group.type === 'evHome')
+  const All_sorts = merchandiseArray.filter(group => group.type === 'apparel' || 'media' || 'tourMerchandise' || 'CollectorMerchandise' || 'evHome')
   
   const Apparel_p = () => {
     document.getElementById("allInfo").innerHTML = merchandiseArray.innerHTML = 
-        apparel_sort.map(function (apparel) {
+        apparel_sorts.map(function (apparel) {
           return `   
       <div class= "card" style="width: 18rem;">
         <img class="card-img-top" src="${apparel.image}" alt="Card image cap">
@@ -100,12 +99,12 @@ const merchPrinter = (merchandiseArray) => {
       </div>
       
       `;
-        }); 
+        }).join(''); 
   }    
   
   const Media_p = () => {
     document.getElementById("allInfo").innerHTML = merchandiseArray.innerHTML = 
-    media_sort.map(function (media) {
+    media_sorts.map(function (media) {
           return `   
       <div class= "card" style="width: 18rem;">
         <img class="card-img-top" src="${media.image}" alt="Card image cap">
@@ -117,12 +116,12 @@ const merchPrinter = (merchandiseArray) => {
       </div>
       
       `;
-        }); 
+        }).join(''); 
   } 
   
   const TourMechandise_p = () => {
     document.getElementById("allInfo").innerHTML = merchandiseArray.innerHTML = 
-    tourMerchandise_sort.map(function (tourMechandise) {
+    tourMerchandise_sorts.map(function (tourMechandise) {
           return `   
       <div class= "card" style="width: 18rem;">
         <img class="card-img-top" src="${tourMechandise.image}" alt="Card image cap">
@@ -134,12 +133,12 @@ const merchPrinter = (merchandiseArray) => {
       </div>
       
       `;
-        }); 
+        }).join(''); 
   }
   
   const CollectorMerchandise_p = () => {
     document.getElementById("allInfo").innerHTML = merchandiseArray.innerHTML = 
-    CollectorMerchandise_sort.map(function (CollectorMerchandise) {
+    CollectorMerchandise_sorts.map(function (CollectorMerchandise) {
           return `   
       <div class= "card" style="width: 18rem;">
         <img class="card-img-top" src="${CollectorMerchandise.image}" alt="Card image cap">
@@ -151,12 +150,12 @@ const merchPrinter = (merchandiseArray) => {
       </div>
       
       `;
-        }); 
+        }).join(''); 
   }
   
   const EVHome_p = () => {
     document.getElementById("allInfo").innerHTML = merchandiseArray.innerHTML = 
-    evHome_sort.map(function (evHome) {
+    evHome_sorts.map(function (evHome) {
           return `   
       <div class= "card" style="width: 18rem;">
         <img class="card-img-top" src="${evHome.image}" alt="Card image cap">
@@ -168,12 +167,12 @@ const merchPrinter = (merchandiseArray) => {
       </div>
       
       `;
-        }); 
+        }).join(''); 
   }
   
   const All_p = () => {
     document.getElementById("allInfo").innerHTML = merchandiseArray.innerHTML = 
-    All_sort.map(function (all) {
+    All_sorts.map(function (all) {
           return `   
       <div class= "card" style="width: 18rem;">
         <img class="card-img-top" src="${all.image}" alt="Card image cap">
@@ -185,7 +184,7 @@ const merchPrinter = (merchandiseArray) => {
       </div>
       
       `;
-        }); 
+        }).join(''); 
   }
   
   const purchaseAlert = () => {
@@ -202,9 +201,9 @@ const merchPrinter = (merchandiseArray) => {
   
 
   // console.log(duhHats)
-console.log(apparel_sort)
-console.log(media_sort)
-console.log(tourMerchandise_sort)
-console.log(evHome_sort)
-console.log(CollectorMerchandise_sort)
-console.log(All_sort)
+console.log(apparel_sorts)
+console.log(media_sorts)
+console.log(tourMerchandise_sorts)
+console.log(evHome_sorts)
+console.log(CollectorMerchandise_sorts)
+console.log(All_sorts)
